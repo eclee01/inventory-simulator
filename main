@@ -1,0 +1,111 @@
+#include <iostream>
+
+class Inventory {
+    private:
+    int itemNumber;
+    int quantity;
+    double cost;
+    double totalCost;
+    public:
+    Inventory();
+    Inventory(int, int, double);
+    void setItemNumber(int);
+    void setQuantity(int);
+    void setCost(double);
+    void setTotalCost();
+    int getItemNumber();
+    int getQuantity();
+    double getCost();
+    double getTotalCost();
+};
+
+Inventory::Inventory() {
+    itemNumber = 0;
+    quantity = 0;
+    cost = 0.0;
+    totalCost = 0.0;
+}
+
+Inventory::Inventory(int num, int amt, double price) {
+    itemNumber = num;
+    quantity = amt;
+    cost = price;
+    setTotalCost();
+}
+
+void Inventory::setItemNumber(int num) {
+    itemNumber = num;
+}
+
+void Inventory::setQuantity(int amt) {
+    quantity = amt;
+}
+
+void Inventory::setCost(double value) {
+    cost = value;
+}
+
+void Inventory::setTotalCost() {
+    totalCost = quantity * cost;
+}
+
+int Inventory::getItemNumber() {
+    return itemNumber;
+}
+
+int Inventory::getQuantity() {
+    return quantity;
+}
+
+double Inventory::getCost() {
+    return cost;
+}
+
+double Inventory::getTotalCost() {
+    return totalCost;
+}
+
+int main()
+{
+    int id, amt;
+    double val, totalVal;
+    
+    Inventory box1;
+    
+    std::cout << "INVENTORY 2019\n\n";
+    std::cout << "What is the item id? ";
+    std::cin >> id;
+    box1.setItemNumber(id);
+    std::cout << "What is the quantity of items? ";
+    std::cin >> amt;
+    box1.setQuantity(amt);
+    std::cout << "What is the cost of one item? ";
+    std::cin >> val;
+    box1.setCost(val);
+    box1.setTotalCost();
+    
+    std::cout << "\nInventory 1\n";
+    std::cout << "Item ID: #" << box1.getItemNumber() << "\n";
+    std::cout << "Quantity: " << box1.getQuantity() << "\n";
+    std::cout << "Individual Cost: $" << box1.getCost() << "\n";
+    std::cout << "Total Cost: $" << box1.getTotalCost() << "\n";
+    
+    std::cout << "*****************************************";
+    
+    std::cout << "\nWhat is the item id? ";
+    std::cin >> id;
+    std::cout << "What is the quantity of items? ";
+    std::cin >> amt;
+    std::cout << "What is the cost of one item? ";
+    std::cin >> val;
+    
+    Inventory box2(id, amt, val);
+    
+    std::cout << "\nInventory 2\n";
+    std::cout << "Item ID: #" << box2.getItemNumber() << "\n";
+    std::cout << "Quantity: " << box2.getQuantity() << "\n";
+    std::cout << "Individual Cost: $" << box2.getCost() << "\n";
+    std::cout << "Total Cost: $" << box2.getTotalCost() << "\n";
+
+    return 0;
+}
